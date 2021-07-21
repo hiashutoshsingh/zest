@@ -1,0 +1,21 @@
+import 'package:flutter/material.dart';
+
+const transactionOthers = 'Others';
+const transactionFood = 'Food and Drinks';
+const transactionShopping = 'Shopping';
+const transactionCommuting = 'Commuting';
+const transactionRepair = 'Repair Works';
+const transactionLongTerm = 'Long Term Savings';
+const transactionSavings = 'Savings';
+const transactionMedical = 'Medical';
+const transactionRent = 'Rent';
+const transactionEntertainment = 'Entertainment';
+const transactionEducation = 'Education';
+const transactionSelfCare = 'Self Care';
+const transactionBills = 'Bills and Utilities';
+const transactionInsurance = 'Insurance';
+const transactionInvestments = 'Investments';
+const transactionGifts = 'Gifts and Donations';
+const cashIcon = Icons.money;
+const cardIcon = Icons.credit_card_rounded;
+const othersIcon = Icons.account_balance_wallet;
