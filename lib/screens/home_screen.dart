@@ -28,14 +28,14 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Container(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: AppColor.lightBlack,
+                color: AppColor.black,
               ),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Icon(
                   Icons.person,
                   size: 24,
-                  color: AppColor.lightOrange,
+                  color: AppColor.black,
                 ),
               ),
             ),
