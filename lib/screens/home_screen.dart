@@ -9,40 +9,158 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String _chosenValue;
+
+  @override
+  void initState() {
+    super.initState();
+    _chosenValue = 'Noida';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.black,
-      drawer: Container(
-        color: Colors.red,
-        width: 200,
+      body: SafeArea(
+        child: Container(
+          child: Column(
+            children: [
+              _homeAppBar(),
+              _places(),
+              _placesList(),
+            ],
+          ),
+        ),
       ),
-      appBar: AppBar(
-        backgroundColor: AppColor.black,
-        elevation: 0,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(
-              right: 16,
+    );
+  }
+
+  Widget _homeAppBar() {
+    return Container(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Icon(
+                      Icons.location_on_outlined,
+                      size: 24,
+                      color: AppColor.white,
+                    ),
+                    SizedBox(
+                      width: 8,
+                    ),
+                    PopupMenuButton<String>(
+                      elevation: 0,
+                      initialValue: _chosenValue,
+                      color: Colors.white,
+                      child: Text(
+                        _chosenValue,
+                        style: AppTextStyles.regularTextStyle.copyWith(
+                          color: AppColor.white,
+                        ),
+                      ),
+                      offset: Offset.fromDirection(100, 0),
+                      onSelected: (v) {
+                        setState(() {
+                          _chosenValue = v;
+                        });
+                      },
+                      itemBuilder: (context) {
+                        return [
+                          'New Delhi',
+                          'Noida',
+                          'Gurgaon',
+                        ].map(
+                          (str) {
+                            return PopupMenuItem(
+                              value: str,
+                              child: Text(
+                                str,
+                                style: AppTextStyles.thinTextStyle.copyWith(
+                                  color: AppColor.black,
+                                  // fontSize: 16,
+                                ),
+                              ),
+                            );
+                          },
+                        ).toList();
+                      },
+                    ),
+                    Icon(
+                      Icons.arrow_drop_down,
+                      size: 24,
+                      color: AppColor.white,
+                    ),
+                  ],
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: AppColor.darkGreen,
+                      width: 2,
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Icon(
+                      Icons.person,
+                      size: 16,
+                      color: AppColor.white,
+                    ),
+                  ),
+                )
+              ],
             ),
-            child: Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: AppColor.black,
+            SizedBox(
+              height: 16,
+            ),
+            TextFormField(
+              style: AppTextStyles.regularTextStyle.copyWith(
+                color: AppColor.lightWhite,
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Icon(
-                  Icons.person,
-                  size: 24,
-                  color: AppColor.black,
+              decoration: InputDecoration(
+                fillColor: Color(0xff242F3B),
+                filled: true,
+                contentPadding: EdgeInsets.all(8),
+                hintStyle: AppTextStyles.regularTextStyle.copyWith(
+                  color: AppColor.white,
+                ),
+                focusedBorder: InputBorder.none,
+                disabledBorder: InputBorder.none,
+                border: InputBorder.none,
+                errorBorder: InputBorder.none,
+                focusedErrorBorder: InputBorder.none,
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.transparent,
+                  ),
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                hintText: 'Search for places or activities',
+                prefixIcon: Icon(
+                  Icons.search,
+                  size: 20,
+                  color: AppColor.lightWhite,
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
-      body: Container(),
     );
+  }
+
+  Widget _places() {
+    return Container();
+  }
+
+  Widget _placesList() {
+    return Container();
   }
 }

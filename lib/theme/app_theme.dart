@@ -34,6 +34,7 @@ class AppTextStyles {
 class AppColor {
   static Color black = Color(0xff121212);
   static Color white = Colors.white;
+  static Color lightWhite = Color(0xffF3F3F3);
   static Color teal = Color(0xff00F7FF);
   static Color lightGreen = Color(0xff00FFB6);
   static Color darkPink = Color(0xffD11B70);
