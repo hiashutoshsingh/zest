@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:zest/theme/app_theme.dart';
 
+import 'home_screen.dart';
+
 class SplashScreen extends StatefulWidget {
   static final String route = 'splash_screen';
 
@@ -12,9 +14,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    // Future.delayed(Duration(seconds: 2), () {
-    //   Navigator.pushNamedAndRemoveUntil(context, HomeScreen.route, (route) => false);
-    // });
+    Future.delayed(Duration(seconds: 2), () {
+      Navigator.pushNamedAndRemoveUntil(context, HomeScreen.route, (route) => false);
+    });
   }
 
   @override

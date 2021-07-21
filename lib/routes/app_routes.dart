@@ -7,7 +7,7 @@ class AppRoutes {
   static final _appRoutes = <String, WidgetBuilder>{
     HomeScreen.route: (BuildContext context) => HomeScreen(),
     SplashScreen.route: (BuildContext context) => SplashScreen(),
-    LoginScreen.route: (BuildContext context) => LoginScreen(),
+    OnBoardingScreen.route: (BuildContext context) => OnBoardingScreen(),
   };
 
   Map<String, WidgetBuilder> appRoutes() {

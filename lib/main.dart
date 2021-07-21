@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:zest/screens/on_boarding_screen.dart';
 
 import 'routes/app_routes.dart';
-import 'screens/splash_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Zest',
       theme: ThemeData(primarySwatch: Colors.red),
       routes: AppRoutes().appRoutes(),
-      initialRoute: SplashScreen.route,
+      initialRoute: OnBoardingScreen.route,
       // initialRoute: HomeScreen.route,
       debugShowCheckedModeBanner: false,
     );
