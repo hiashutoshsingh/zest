@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zest/theme/app_theme.dart';
 import 'package:zest/widgets/home_app_bar.dart';
-import 'package:zest/widgets/popular_things_widget.dart';
+import 'package:zest/widgets/list_popular_things_widget.dart';
 import 'package:zest/widgets/things_list.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -34,7 +34,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Expanded(
                     flex: 5,
-                    child: PopularThingsWidget(),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                      ),
+                      child: PopularThingsListWidget(),
+                    ),
                   ),
                 ],
               ),
