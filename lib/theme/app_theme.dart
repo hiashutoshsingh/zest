@@ -16,6 +16,7 @@ class AppTextStyles {
     color: AppColor.white,
     letterSpacing: 0.2,
   );
+
   static final TextStyle semiBoldTextStyle = GoogleFonts.raleway(
     fontSize: 18,
     fontWeight: FontWeight.w600,
