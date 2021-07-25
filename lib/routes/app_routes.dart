@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zest/screens/home_screen.dart';
 import 'package:zest/screens/on_boarding_screen.dart';
+import 'package:zest/screens/place_screen.dart';
 import 'package:zest/screens/splash_screen.dart';
 
 class AppRoutes {
@@ -8,6 +9,7 @@ class AppRoutes {
     HomeScreen.route: (BuildContext context) => HomeScreen(),
     SplashScreen.route: (BuildContext context) => SplashScreen(),
     OnBoardingScreen.route: (BuildContext context) => OnBoardingScreen(),
+    PlaceScreen.route: (BuildContext context) => PlaceScreen(),
   };
 
   Map<String, WidgetBuilder> appRoutes() {

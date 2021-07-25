@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zest/screens/place_screen.dart';
 import 'package:zest/theme/app_theme.dart';
 import 'package:zest/widgets/popular_thing_widget.dart';
 
@@ -25,7 +26,12 @@ class PopularThingsListWidget extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                PlaceScreen.route,
+              );
+            },
             child: PopularThingWidget(
               title: 'Climb Central Delhi',
               rating: '4',
