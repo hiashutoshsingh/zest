@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:zest/theme/app_theme.dart';
 
-class CircularTask extends StatelessWidget {
+class PlaceCategoryWidget extends StatelessWidget {
   final String title;
 
-  CircularTask({
+  PlaceCategoryWidget({
     this.title,
   });
 

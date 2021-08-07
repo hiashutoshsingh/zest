@@ -13,7 +13,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  bool _haveNetwork = false;
+  bool _haveNetwork = true;
 
   @override
   void initState() {
@@ -42,7 +42,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             padding: const EdgeInsets.symmetric(
                               horizontal: 20,
                             ),
-                            child: PopularThingsListWidget(),
+                            child: PlacesListWidget(
+                              isHomeScreen: true,
+                            ),
                           ),
                         ),
                       ],

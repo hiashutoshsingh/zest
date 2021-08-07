@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:zest/screens/category_listing_screen.dart';
 
-import 'circular_task.dart';
+import 'place_category_widget.dart';
 
 class ThingsList extends StatelessWidget {
   @override
@@ -12,8 +13,13 @@ class ThingsList extends StatelessWidget {
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.all(8.0),
-          child: CircularTask(
-            title: 'index ${index + 1}',
+          child: InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, CategoryListingScreen.route);
+            },
+            child: PlaceCategoryWidget(
+              title: 'index ${index + 1}',
+            ),
           ),
         );
       },

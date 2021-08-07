@@ -3,14 +3,20 @@ import 'package:zest/screens/place_screen.dart';
 import 'package:zest/theme/app_theme.dart';
 import 'package:zest/widgets/popular_thing_widget.dart';
 
-class PopularThingsListWidget extends StatelessWidget {
+class PlacesListWidget extends StatelessWidget {
+  final bool isHomeScreen;
+
+  PlacesListWidget({
+    this.isHomeScreen = false,
+  });
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
       itemCount: 10,
       itemBuilder: (context, index) {
-        if (index == 0) {
+        if (index == 0 && isHomeScreen) {
           return Padding(
             padding: const EdgeInsets.symmetric(
               vertical: 16,
