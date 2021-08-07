@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:zest/theme/app_theme.dart';
 import 'package:zest/widgets/home_app_bar.dart';
 import 'package:zest/widgets/list_popular_things_widget.dart';
+import 'package:zest/widgets/no_network_widget.dart';
 import 'package:zest/widgets/things_list.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -12,6 +13,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool _haveNetwork = false;
+
   @override
   void initState() {
     super.initState();
@@ -26,23 +29,25 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             HomeAppBar(),
             Expanded(
-              child: Column(
-                children: [
-                  Expanded(
-                    flex: 1,
-                    child: ThingsList(),
-                  ),
-                  Expanded(
-                    flex: 5,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                      ),
-                      child: PopularThingsListWidget(),
-                    ),
-                  ),
-                ],
-              ),
+              child: _haveNetwork
+                  ? Column(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: ThingsList(),
+                        ),
+                        Expanded(
+                          flex: 5,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 20,
+                            ),
+                            child: PopularThingsListWidget(),
+                          ),
+                        ),
+                      ],
+                    )
+                  : NoNetworkWidget(),
             ),
           ],
         ),

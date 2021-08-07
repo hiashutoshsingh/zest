@@ -13,7 +13,7 @@ class ThingsList extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: CircularTask(
-            title: 'index $index',
+            title: 'index ${index + 1}',
           ),
         );
       },
