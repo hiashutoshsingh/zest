@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zest/screens/profile_screen.dart';
 import 'package:zest/screens/search_screen.dart';
 import 'package:zest/theme/app_theme.dart';
 
@@ -80,20 +81,23 @@ class _HomeAppBarState extends State<HomeAppBar> {
                     ),
                   ],
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: AppColor.darkGreen,
-                      width: 2,
+                InkWell(
+                  onTap: () => Navigator.pushNamed(context, ProfileScreen.route),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: AppColor.darkGreen,
+                        width: 2,
+                      ),
                     ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Icon(
-                      Icons.person,
-                      size: 16,
-                      color: AppColor.white,
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Icon(
+                        Icons.person,
+                        size: 16,
+                        color: AppColor.white,
+                      ),
                     ),
                   ),
                 )
