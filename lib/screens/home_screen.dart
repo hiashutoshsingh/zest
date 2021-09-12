@@ -33,11 +33,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   ? Column(
                       children: [
                         Expanded(
-                          flex: 1,
+                          flex: 2,
                           child: ThingsList(),
                         ),
                         Expanded(
-                          flex: 5,
+                          flex: 8,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 20,

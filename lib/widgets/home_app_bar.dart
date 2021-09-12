@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zest/screens/search_screen.dart';
 import 'package:zest/theme/app_theme.dart';
 
 class HomeAppBar extends StatefulWidget {
@@ -101,36 +102,39 @@ class _HomeAppBarState extends State<HomeAppBar> {
             SizedBox(
               height: 16,
             ),
-            TextFormField(
-              style: AppTextStyles.regularTextStyle.copyWith(
-                color: AppColor.lightWhite,
-              ),
-              decoration: InputDecoration(
-                fillColor: Color(0xff242F3B),
-                filled: true,
-                contentPadding: EdgeInsets.all(8),
-                hintStyle: AppTextStyles.regularTextStyle.copyWith(
-                  color: AppColor.white,
-                ),
-                focusedBorder: InputBorder.none,
-                disabledBorder: InputBorder.none,
-                border: InputBorder.none,
-                errorBorder: InputBorder.none,
-                focusedErrorBorder: InputBorder.none,
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.transparent,
+            InkWell(
+              onTap: () => Navigator.pushNamed(context, SearchScreen.route),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(
+                    color: AppColor.white,
+                    width: .5,
                   ),
-                  borderRadius: BorderRadius.circular(6),
                 ),
-                hintText: 'Search for places or activities',
-                prefixIcon: Icon(
-                  Icons.search,
-                  size: 20,
-                  color: AppColor.lightWhite,
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.search,
+                        size: 20,
+                        color: AppColor.lightGrey,
+                      ),
+                      SizedBox(
+                        width: 16,
+                      ),
+                      Text(
+                        'Search for places or activities',
+                        style: AppTextStyles.regularTextStyle.copyWith(
+                          color: AppColor.lightGrey,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
+            )
           ],
         ),
       ),

@@ -3,6 +3,7 @@ import 'package:zest/screens/category_listing_screen.dart';
 import 'package:zest/screens/home_screen.dart';
 import 'package:zest/screens/on_boarding_screen.dart';
 import 'package:zest/screens/place_screen.dart';
+import 'package:zest/screens/search_screen.dart';
 import 'package:zest/screens/splash_screen.dart';
 
 class AppRoutes {
@@ -12,6 +13,7 @@ class AppRoutes {
     OnBoardingScreen.route: (BuildContext context) => OnBoardingScreen(),
     PlaceScreen.route: (BuildContext context) => PlaceScreen(),
     CategoryListingScreen.route: (BuildContext context) => CategoryListingScreen(),
+    SearchScreen.route: (BuildContext context) => SearchScreen(),
   };
 
   Map<String, WidgetBuilder> appRoutes() {

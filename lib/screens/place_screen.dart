@@ -27,7 +27,7 @@ class PlaceScreen extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: AppColor.lightGrey,
+                          color: AppColor.grey,
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),

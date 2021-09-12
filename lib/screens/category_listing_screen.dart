@@ -51,12 +51,9 @@ class CategoryListingScreen extends StatelessWidget {
                           itemCount: 10,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
-                            return Container(
-                              height: 50,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: _category('index ${index + 1}'),
-                              ),
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: _category('index ${index + 1}'),
                             );
                           },
                         ),
@@ -65,7 +62,7 @@ class CategoryListingScreen extends StatelessWidget {
                         height: 16,
                       ),
                       Expanded(
-                        flex: 15,
+                        flex: 12,
                         child: PlacesListWidget(),
                       ),
                     ],
