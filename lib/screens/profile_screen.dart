@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:zest/data/args/feedback_bug_arg.dart';
+import 'package:zest/screens/feedback_bug_screen.dart';
+import 'package:zest/screens/saved_activities_screen.dart';
+import 'package:zest/screens/splash_screen.dart';
 import 'package:zest/theme/app_theme.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -11,10 +15,13 @@ class ProfileScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColor.black,
         elevation: 0,
-        leading: Icon(
-          Icons.arrow_back_ios,
-          size: 24,
-          color: AppColor.white,
+        leading: InkWell(
+          onTap: () => Navigator.pop(context),
+          child: Icon(
+            Icons.arrow_back_ios,
+            size: 24,
+            color: AppColor.white,
+          ),
         ),
         title: Text(
           'My Profile',
@@ -77,19 +84,37 @@ class ProfileScreen extends StatelessWidget {
                     SizedBox(
                       height: 24,
                     ),
-                    _item(Icons.bookmark_border, 'Saved Activities'),
+                    InkWell(
+                      onTap: () => Navigator.pushNamed(context, SavedActivitiesScreen.route),
+                      child: _item(Icons.bookmark_border, 'Saved Activities'),
+                    ),
                     SizedBox(
                       height: 32,
                     ),
-                    _item(Icons.emoji_emotions_rounded, 'Give us Feedback'),
+                    InkWell(
+                      onTap: () => Navigator.pushNamed(
+                        context,
+                        FeedbackBugScreen.route,
+                        arguments: FeedbackBugArg(
+                          isFeedback: true,
+                        ),
+                      ),
+                      child: _item(Icons.emoji_emotions_rounded, 'Give us Feedback'),
+                    ),
                     SizedBox(
                       height: 32,
                     ),
-                    _item(Icons.bug_report_outlined, 'Report a Bug'),
+                    InkWell(
+                      onTap: () => Navigator.pushNamed(context, FeedbackBugScreen.route),
+                      child: _item(Icons.bug_report_outlined, 'Report a Bug'),
+                    ),
                     SizedBox(
                       height: 32,
                     ),
-                    _item(Icons.logout, 'Logout'),
+                    InkWell(
+                      onTap: () => Navigator.pushNamed(context, SplashScreen.route),
+                      child: _item(Icons.logout, 'Logout'),
+                    ),
                     SizedBox(
                       height: 32,
                     ),
