@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zest/screens/home_screen.dart';
+import 'package:zest/screens/login_screen.dart';
 
 import 'routes/app_routes.dart';
 
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Zest',
       theme: ThemeData(primarySwatch: Colors.red),
       routes: AppRoutes().appRoutes(),
-      initialRoute: HomeScreen.route,
+      initialRoute: LoginScreen.route,
       // initialRoute: HomeScreen.route,
       debugShowCheckedModeBanner: false,
     );

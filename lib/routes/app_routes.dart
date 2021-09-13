@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:zest/screens/category_listing_screen.dart';
 import 'package:zest/screens/feedback_bug_screen.dart';
 import 'package:zest/screens/home_screen.dart';
+import 'package:zest/screens/login_screen.dart';
 import 'package:zest/screens/on_boarding_screen.dart';
 import 'package:zest/screens/place_screen.dart';
 import 'package:zest/screens/profile_screen.dart';
@@ -20,6 +21,7 @@ class AppRoutes {
     ProfileScreen.route: (BuildContext context) => ProfileScreen(),
     SavedActivitiesScreen.route: (BuildContext context) => SavedActivitiesScreen(),
     FeedbackBugScreen.route: (BuildContext context) => FeedbackBugScreen(),
+    LoginScreen.route: (BuildContext context) => LoginScreen(),
   };
 
   Map<String, WidgetBuilder> appRoutes() {
