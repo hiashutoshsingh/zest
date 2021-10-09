@@ -8,6 +8,7 @@ import 'package:zest/screens/place_screen.dart';
 import 'package:zest/screens/profile_screen.dart';
 import 'package:zest/screens/saved_activities_screen.dart';
 import 'package:zest/screens/search_screen.dart';
+import 'package:zest/screens/select_city_screen.dart';
 import 'package:zest/screens/splash_screen.dart';
 
 class AppRoutes {
@@ -22,6 +23,7 @@ class AppRoutes {
     SavedActivitiesScreen.route: (BuildContext context) => SavedActivitiesScreen(),
     FeedbackBugScreen.route: (BuildContext context) => FeedbackBugScreen(),
     LoginScreen.route: (BuildContext context) => LoginScreen(),
+    SelectCityScreen.route: (BuildContext context) => SelectCityScreen(),
   };
 
   Map<String, WidgetBuilder> appRoutes() {

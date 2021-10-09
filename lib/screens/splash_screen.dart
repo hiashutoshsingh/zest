@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zest/screens/home_screen.dart';
 import 'package:zest/screens/login_screen.dart';
+import 'package:zest/screens/select_city_screen.dart';
 import 'package:zest/theme/app_theme.dart';
 import 'package:zest/utils/app_storage.dart';
 import 'package:zest/utils/constants.dart';
@@ -21,9 +22,13 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> _routeToScreen() async {
     String email = await AppStorage().readData(emailKey);
+    String selectedCity = await AppStorage().readData(selectedCityKey);
     String route = LoginScreen.route;
     if (email != null && email.trim().isNotEmpty) {
-      route = HomeScreen.route;
+      route = SelectCityScreen.route;
+      if (selectedCity != null && selectedCity.trim().isNotEmpty) {
+        route = HomeScreen.route;
+      }
     }
     Future.delayed(Duration(milliseconds: 1500), () {
       Navigator.pushNamedAndRemoveUntil(context, route, (route) => false);

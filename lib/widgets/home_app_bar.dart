@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:zest/screens/profile_screen.dart';
+import 'package:zest/screens/login_screen.dart';
 import 'package:zest/screens/search_screen.dart';
 import 'package:zest/theme/app_theme.dart';
+import 'package:zest/utils/app_storage.dart';
 
 class HomeAppBar extends StatefulWidget {
   @override
@@ -82,7 +83,11 @@ class _HomeAppBarState extends State<HomeAppBar> {
                   ],
                 ),
                 InkWell(
-                  onTap: () => Navigator.pushNamed(context, ProfileScreen.route),
+                  onTap: () async {
+                    await AppStorage().deleteAll();
+                    Navigator.pushNamed(context, LoginScreen.route);
+                    // Navigator.pushNamed(context, ProfileScreen.route);
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
