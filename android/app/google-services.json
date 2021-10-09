@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "141121739804",
+    "project_id": "zest-tech",
+    "storage_bucket": "zest-tech.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:141121739804:android:4f97553bd2e56fe396d3d9",
+        "android_client_info": {
+          "package_name": "com.zest.india.zest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "141121739804-fi508m263c6dreifqgc6ijbi6n5jjsm1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zest.india.zest",
+            "certificate_hash": "9ca111cd9c9f61506414b879f4cd9af7cbf63a81"
+          }
+        },
+        {
+          "client_id": "141121739804-hm77uluuuqn2jt8eqp8ou8k1o7nk2bn3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOC98Z_vvIBAb1hIEXD5QoU9xZSrl3Fz0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "141121739804-hm77uluuuqn2jt8eqp8ou8k1o7nk2bn3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

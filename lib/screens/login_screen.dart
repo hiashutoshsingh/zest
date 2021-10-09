@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zest/screens/home_screen.dart';
 import 'package:zest/theme/app_theme.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -67,11 +68,14 @@ class LoginScreen extends StatelessWidget {
               SizedBox(
                 height: 24,
               ),
-              Text(
-                'Not Now',
-                style: AppTextStyles.regularTextStyle.copyWith(
-                  color: AppColor.grey,
-                  fontSize: 16,
+              GestureDetector(
+                onTap: () => Navigator.pushNamed(context, HomeScreen.route),
+                child: Text(
+                  'Not Now',
+                  style: AppTextStyles.regularTextStyle.copyWith(
+                    color: AppColor.grey,
+                    fontSize: 16,
+                  ),
                 ),
               ),
             ],

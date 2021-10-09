@@ -2,6 +2,7 @@
     package="com.zest.india.zest">
    <application
         android:label="zest"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
