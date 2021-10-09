@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zest/screens/home_screen.dart';
+import 'package:zest/screens/login_screen.dart';
 import 'package:zest/theme/app_theme.dart';
-
-import 'home_screen.dart';
+import 'package:zest/utils/app_storage.dart';
+import 'package:zest/utils/constants.dart';
 
 class SplashScreen extends StatefulWidget {
   static final String route = 'splash_screen';
@@ -12,10 +14,19 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
-  void initState() {
-    super.initState();
-    Future.delayed(Duration(seconds: 2), () {
-      Navigator.pushNamedAndRemoveUntil(context, HomeScreen.route, (route) => false);
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _routeToScreen();
+  }
+
+  Future<void> _routeToScreen() async {
+    String email = await AppStorage().readData(emailKey);
+    String route = LoginScreen.route;
+    if (email != null && email.trim().isNotEmpty) {
+      route = HomeScreen.route;
+    }
+    Future.delayed(Duration(milliseconds: 1500), () {
+      Navigator.pushNamedAndRemoveUntil(context, route, (route) => false);
     });
   }
 

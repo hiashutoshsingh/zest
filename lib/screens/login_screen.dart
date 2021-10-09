@@ -1,9 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:zest/screens/home_screen.dart';
 import 'package:zest/theme/app_theme.dart';
+import 'package:zest/utils/app_storage.dart';
+import 'package:zest/utils/common.dart';
+import 'package:zest/utils/constants.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   static final String route = 'login_screen';
+
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  bool _isLoggingIn;
+
+  @override
+  void initState() {
+    super.initState();
+    _isLoggingIn = false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,50 +50,72 @@ class LoginScreen extends StatelessWidget {
               SizedBox(
                 height: 48,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4),
-                    border: Border.all(
-                      color: AppColor.white,
-                    ),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(12.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+              _isLoggingIn
+                  ? CircularProgressIndicator()
+                  : Column(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        Image.asset(
-                          'asset/google.png',
-                          height: 32,
-                          width: 32,
+                        GestureDetector(
+                          onTap: () async {
+                            Common.signInWithGoogle(
+                              (val, userCredential) async {
+                                _isLoggingIn = val;
+                                if (userCredential != null) {
+                                  await AppStorage().writeData(emailKey, userCredential.user.email.trim());
+                                  await AppStorage().writeData(nameKey, userCredential.user.displayName.trim());
+                                  Navigator.pushNamedAndRemoveUntil(context, HomeScreen.route, (route) => false);
+                                }
+                                setState(() {});
+                              },
+                            );
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(4),
+                                border: Border.all(
+                                  color: AppColor.white,
+                                ),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(12.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset(
+                                      'asset/google.png',
+                                      height: 32,
+                                      width: 32,
+                                    ),
+                                    SizedBox(
+                                      width: 16,
+                                    ),
+                                    Text(
+                                      'Login via Google',
+                                      style: AppTextStyles.regularTextStyle.copyWith(),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                         SizedBox(
-                          width: 16,
+                          height: 24,
                         ),
-                        Text(
-                          'Login via Google',
-                          style: AppTextStyles.regularTextStyle.copyWith(),
+                        GestureDetector(
+                          onTap: () => Navigator.pushNamed(context, HomeScreen.route),
+                          child: Text(
+                            'Not Now',
+                            style: AppTextStyles.regularTextStyle.copyWith(
+                              color: AppColor.grey,
+                              fontSize: 16,
+                            ),
+                          ),
                         ),
                       ],
                     ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 24,
-              ),
-              GestureDetector(
-                onTap: () => Navigator.pushNamed(context, HomeScreen.route),
-                child: Text(
-                  'Not Now',
-                  style: AppTextStyles.regularTextStyle.copyWith(
-                    color: AppColor.grey,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
             ],
           ),
         ),
