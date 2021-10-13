@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:zest/screens/splash_screen.dart';
 
 import 'data/provider/home_provider.dart';
 import 'routes/app_routes.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       title: 'Zest',
       theme: ThemeData(primarySwatch: Colors.red),
       routes: AppRoutes().appRoutes(),
-      initialRoute: SelectCityScreen.route,
+      initialRoute: SplashScreen.route,
       // initialRoute: HomeScreen.route,
       debugShowCheckedModeBanner: false,
     );

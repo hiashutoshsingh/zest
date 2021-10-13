@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:zest/screens/home_screen.dart';
 import 'package:zest/theme/app_theme.dart';
+import 'package:zest/utils/api_services/user_api.dart';
 import 'package:zest/utils/app_storage.dart';
-import 'package:zest/utils/common.dart';
 import 'package:zest/utils/constants.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -57,17 +57,18 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         GestureDetector(
                           onTap: () async {
-                            Common.signInWithGoogle(
-                              (val, userCredential) async {
-                                _isLoggingIn = val;
-                                if (userCredential != null) {
-                                  await AppStorage().writeData(emailKey, userCredential.user.email.trim());
-                                  await AppStorage().writeData(nameKey, userCredential.user.displayName.trim());
-                                  Navigator.pushNamedAndRemoveUntil(context, HomeScreen.route, (route) => false);
-                                }
-                                setState(() {});
-                              },
-                            );
+                            _registerUser('test@gmail.com', 'test');
+                            // Common.signInWithGoogle(
+                            //   (val, userCredential) async {
+                            //     _isLoggingIn = val;
+                            //     if (userCredential != null) {
+                            //       String name = userCredential.user.displayName.trim();
+                            //       String email = userCredential.user.email.trim();
+                            //       _registerUser(email, name);
+                            //     }
+                            //     setState(() {});
+                            //   },
+                            // );
                           },
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -120,6 +121,20 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  _registerUser(String email, String name) async {
+    UserApi().registerUser(email).then(
+      (value) async {
+        await AppStorage().writeData(emailKey, email);
+        await AppStorage().writeData(nameKey, name);
+        Navigator.pushNamedAndRemoveUntil(context, HomeScreen.route, (route) => false);
+      },
+    ).catchError(
+      (e) {
+        print(e);
+      },
     );
   }
 }

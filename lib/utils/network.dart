@@ -1,8 +1,6 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:dio_smart_retry/dio_smart_retry.dart';
-import 'package:zest/utils/constants.dart';
 
 import 'app_logger.dart';
 
@@ -11,22 +9,15 @@ class AppNetwork {
   static Dio getClient() {
     Dio dio = new Dio();
 
-    dio.interceptors.add(_getRetryInterceptor(dio));
-    dio.interceptors.add(_getInterceptorsWrapper());
+    // dio.interceptors.add(_getInterceptorsWrapper());
 
-    dio.options.baseUrl = apiUrl;
+    dio.options.baseUrl = 'http://35.154.174.239:1337';
 
     // handle timeouts
     dio.options.connectTimeout = 20000;
     dio.options.receiveTimeout = 20000;
 
     return dio;
-  }
-
-  static RetryInterceptor _getRetryInterceptor(Dio dio) {
-    return RetryInterceptor(
-      dio: dio,
-    );
   }
 
   static InterceptorsWrapper _getInterceptorsWrapper() {

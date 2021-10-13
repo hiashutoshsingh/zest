@@ -19,7 +19,6 @@ const transactionGifts = 'Gifts and Donations';
 const cashIcon = Icons.money;
 const cardIcon = Icons.credit_card_rounded;
 const othersIcon = Icons.account_balance_wallet;
-const apiUrl = 'http://35.154.174.239:1337';
 const emailKey = 'emailKey';
 const nameKey = 'nameKey';
 const selectedCityKey = 'selectCityKey';
