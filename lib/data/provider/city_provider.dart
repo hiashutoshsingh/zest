@@ -24,10 +24,9 @@ class CityProvider extends ChangeNotifier {
 
   void fetchCities() {
     loading = true;
-    UserApi().getCities().then(
+    ServiceApi().getCities().then(
       (value) async {
         if (value != null) {
-          loading = false;
           cityListResponse = CityListResponse();
           List<CityItem> cities = [];
           value.forEach((data) {
@@ -35,6 +34,7 @@ class CityProvider extends ChangeNotifier {
             cities.add(cityItem);
           });
           cityListResponse.cityList = cities;
+          loading = false;
         }
       },
     ).catchError(

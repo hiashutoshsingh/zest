@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:zest/data/model/category_list_response.dart';
 import 'package:zest/screens/category_listing_screen.dart';
 
 import 'place_category_widget.dart';
 
-class ThingsList extends StatelessWidget {
+class CategoryList extends StatelessWidget {
+  final CategoryListResponse categoryListResponse;
+
+  CategoryList(this.categoryListResponse);
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: 10,
+      itemCount: categoryListResponse.categoryList.length,
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) {
         return Padding(
@@ -17,8 +22,8 @@ class ThingsList extends StatelessWidget {
             onTap: () {
               Navigator.pushNamed(context, CategoryListingScreen.route);
             },
-            child: PlaceCategoryWidget(
-              title: 'index ${index + 1}',
+            child: CategoryWidget(
+              categoryItem: categoryListResponse.categoryList[index],
             ),
           ),
         );

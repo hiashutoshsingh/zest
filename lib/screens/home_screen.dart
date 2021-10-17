@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:provider/provider.dart';
+import 'package:zest/data/provider/home_provider.dart';
 import 'package:zest/theme/app_theme.dart';
 import 'package:zest/widgets/home_app_bar.dart';
 import 'package:zest/widgets/list_popular_things_widget.dart';
-import 'package:zest/widgets/no_network_widget.dart';
 import 'package:zest/widgets/things_list.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -13,11 +15,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  bool _haveNetwork = true;
-
   @override
   void initState() {
     super.initState();
+    SchedulerBinding.instance.addPostFrameCallback((timings) {
+      Provider.of<HomeProvider>(context, listen: false).fetchCategories();
+    });
   }
 
   @override
@@ -29,27 +32,34 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             HomeAppBar(),
             Expanded(
-              child: _haveNetwork
-                  ? Column(
-                      children: [
-                        Expanded(
-                          flex: 2,
-                          child: ThingsList(),
-                        ),
-                        Expanded(
-                          flex: 8,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 20,
-                            ),
-                            child: PlacesListWidget(
-                              isHomeScreen: true,
-                            ),
+              child: Consumer<HomeProvider>(
+                builder: (BuildContext pContext, homeProvider, Widget child) {
+                  if (homeProvider.loading || homeProvider.categoryListResponse == null) {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  return Column(
+                    children: [
+                      Expanded(
+                        flex: 2,
+                        child: CategoryList(homeProvider.categoryListResponse),
+                      ),
+                      Expanded(
+                        flex: 8,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 20,
+                          ),
+                          child: PlacesListWidget(
+                            isHomeScreen: true,
                           ),
                         ),
-                      ],
-                    )
-                  : NoNetworkWidget(),
+                      ),
+                    ],
+                  );
+                },
+              ),
             ),
           ],
         ),

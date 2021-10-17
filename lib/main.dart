@@ -1,11 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:zest/screens/home_screen.dart';
 
 import 'data/provider/city_provider.dart';
 import 'data/provider/home_provider.dart';
 import 'routes/app_routes.dart';
-import 'screens/select_city_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       title: 'Zest',
       theme: ThemeData(primarySwatch: Colors.red),
       routes: AppRoutes().appRoutes(),
-      initialRoute: SelectCityScreen.route,
+      initialRoute: HomeScreen.route,
       // initialRoute: HomeScreen.route,
       debugShowCheckedModeBanner: false,
     );

@@ -127,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   _registerUser(String email, String name) async {
-    UserApi().registerUser(email).then(
+    ServiceApi().registerUser(email).then(
       (value) async {
         print("_registerUser 1111 $value");
         if (value != null) {

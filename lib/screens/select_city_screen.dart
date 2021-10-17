@@ -16,12 +16,9 @@ class SelectCityScreen extends StatefulWidget {
 }
 
 class _SelectCityScreenState extends State<SelectCityScreen> {
-  bool _loading;
-
   @override
   void initState() {
     super.initState();
-    _loading = true;
     SchedulerBinding.instance.addPostFrameCallback((timings) {
       Provider.of<CityProvider>(context, listen: false).fetchCities();
     });

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:zest/data/model/category_list_response.dart';
 import 'package:zest/theme/app_theme.dart';
+import 'package:zest/utils/constants.dart';
 
-class PlaceCategoryWidget extends StatelessWidget {
-  final String title;
+class CategoryWidget extends StatelessWidget {
+  final CategoryItem categoryItem;
 
-  PlaceCategoryWidget({
-    this.title,
+  CategoryWidget({
+    this.categoryItem,
   });
 
   @override
@@ -20,10 +22,16 @@ class PlaceCategoryWidget extends StatelessWidget {
               width: 3,
             ),
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(32.0),
-            child: Container(
-              color: AppColor.purple,
+          child: SizedBox(
+            width: 60,
+            height: 60,
+            child: ClipRRect(
+              clipBehavior: Clip.hardEdge,
+              borderRadius: BorderRadius.circular(128),
+              child: Image.network(
+                apiUrl + categoryItem.categoryImage.image.formats.medium.url,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ),
@@ -31,7 +39,7 @@ class PlaceCategoryWidget extends StatelessWidget {
           height: 8,
         ),
         Text(
-          title,
+          categoryItem.categoryName,
           style: AppTextStyles.regularTextStyle,
         ),
       ],
