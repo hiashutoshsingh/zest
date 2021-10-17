@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 
 import 'app_logger.dart';
+import 'constants.dart';
 
 class AppNetwork {
   // global configuration
@@ -11,7 +12,10 @@ class AppNetwork {
 
     // dio.interceptors.add(_getInterceptorsWrapper());
 
-    dio.options.baseUrl = 'http://35.154.174.239:1337';
+    dio.options.baseUrl = apiUrl;
+
+    AppLogger.print("Pre request:${dio.options.method},${dio.options.baseUrl}");
+    AppLogger.print("Pre request:${dio.options.headers.toString()}");
 
     // handle timeouts
     dio.options.connectTimeout = 20000;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zest/screens/home_screen.dart';
+import 'package:zest/screens/select_city_screen.dart';
 import 'package:zest/theme/app_theme.dart';
 import 'package:zest/utils/api_services/user_api.dart';
 import 'package:zest/utils/app_storage.dart';
@@ -57,7 +58,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         GestureDetector(
                           onTap: () async {
-                            _registerUser('test@gmail.com', 'test');
+                            Navigator.pushNamed(context, SelectCityScreen.route);
+                            // _registerUser('test@gmail.com', 'test');
                             // Common.signInWithGoogle(
                             //   (val, userCredential) async {
                             //     _isLoggingIn = val;
@@ -106,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: 24,
                         ),
                         GestureDetector(
-                          onTap: () => Navigator.pushNamed(context, HomeScreen.route),
+                          onTap: () => Navigator.pushNamed(context, SelectCityScreen.route),
                           child: Text(
                             'Not Now',
                             style: AppTextStyles.regularTextStyle.copyWith(
@@ -127,12 +129,16 @@ class _LoginScreenState extends State<LoginScreen> {
   _registerUser(String email, String name) async {
     UserApi().registerUser(email).then(
       (value) async {
-        await AppStorage().writeData(emailKey, email);
-        await AppStorage().writeData(nameKey, name);
-        Navigator.pushNamedAndRemoveUntil(context, HomeScreen.route, (route) => false);
+        print("_registerUser 1111 $value");
+        if (value != null) {
+          await AppStorage().writeData(emailKey, email);
+          await AppStorage().writeData(nameKey, name);
+          Navigator.pushNamedAndRemoveUntil(context, HomeScreen.route, (route) => false);
+        }
       },
     ).catchError(
       (e) {
+        print("_registerUser 222 $e");
         print(e);
       },
     );

@@ -1,5 +1,8 @@
+import 'package:dio/src/response.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
+import 'app_logger.dart';
 
 class Common {
   static void signInWithGoogle(Function(bool, UserCredential) loggingInCallback) async {
@@ -38,5 +41,9 @@ class Common {
       return null;
     });
     loggingInCallback(true, userCredential);
+  }
+
+  static void responsePrint(Response<dynamic> response) {
+    AppLogger.print("Response: ${response.data}");
   }
 }

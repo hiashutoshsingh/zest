@@ -44,4 +44,5 @@ class AppColor {
   static Color lightPink = Color(0xffE37BD6);
   static Color lightGrey = Color(0xffF3F3F3);
   static Color grey = Color(0xffB5B5B5);
+  static Color red = Colors.red;
 }

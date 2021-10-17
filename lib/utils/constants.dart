@@ -22,3 +22,4 @@ const othersIcon = Icons.account_balance_wallet;
 const emailKey = 'emailKey';
 const nameKey = 'nameKey';
 const selectedCityKey = 'selectCityKey';
+const apiUrl = 'http://35.154.174.239:1337';
