@@ -20,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     SchedulerBinding.instance.addPostFrameCallback((timings) {
       Provider.of<HomeProvider>(context, listen: false).fetchCategories();
+      Provider.of<HomeProvider>(context, listen: false).fetchActivities();
     });
   }
 
@@ -34,7 +35,10 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               child: Consumer<HomeProvider>(
                 builder: (BuildContext pContext, homeProvider, Widget child) {
-                  if (homeProvider.loading || homeProvider.categoryListResponse == null) {
+                  if (homeProvider.categoryLoading ||
+                      homeProvider.activityLoading ||
+                      homeProvider.categoryListResponse == null ||
+                      homeProvider.activityListResponse == null) {
                     return Center(
                       child: CircularProgressIndicator(),
                     );
@@ -53,6 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           child: PlacesListWidget(
                             isHomeScreen: true,
+                            activityListResponse: homeProvider.activityListResponse,
                           ),
                         ),
                       ),

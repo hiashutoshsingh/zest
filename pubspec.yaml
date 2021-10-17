@@ -20,6 +20,7 @@ dependencies:
   dio: 4.0.0
   dio_smart_retry: 1.0.3
   logger: 1.1.0
+  glassmorphism: 3.0.0
 
 flutter:
   uses-material-design: true

@@ -39,4 +39,15 @@ class ServiceApi {
       },
     );
   }
+
+  Future getActivities() async {
+    return AppNetwork.getClient().get('/activities/').then((response) {
+      Common.responsePrint(response);
+      return response.data;
+    }).catchError(
+      (error) {
+        AppLogger.print("ServiceApi: $error");
+      },
+    );
+  }
 }

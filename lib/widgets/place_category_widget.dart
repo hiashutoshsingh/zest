@@ -40,7 +40,7 @@ class CategoryWidget extends StatelessWidget {
         ),
         Text(
           categoryItem.categoryName,
-          style: AppTextStyles.regularTextStyle,
+          style: AppTextStyles.thinTextStyle.copyWith(fontSize: 16),
         ),
       ],
     );

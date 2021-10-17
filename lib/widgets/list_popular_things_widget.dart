@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:zest/data/model/activity_list_response.dart';
 import 'package:zest/screens/place_screen.dart';
 import 'package:zest/theme/app_theme.dart';
 import 'package:zest/widgets/popular_thing_widget.dart';
 
 class PlacesListWidget extends StatelessWidget {
   final bool isHomeScreen;
+  final ActivityListResponse activityListResponse;
 
   PlacesListWidget({
     this.isHomeScreen = false,
+    this.activityListResponse,
   });
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: 10,
+      itemCount: activityListResponse.activityList.length + 1,
       itemBuilder: (context, index) {
         if (index == 0 && isHomeScreen) {
           return Padding(
@@ -33,15 +36,10 @@ class PlacesListWidget extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: InkWell(
             onTap: () {
-              Navigator.pushNamed(
-                context,
-                PlaceScreen.route,
-              );
+              Navigator.pushNamed(context, PlaceScreen.route);
             },
             child: PopularThingWidget(
-              title: 'Climb Central Delhi',
-              rating: '4',
-              price: '₹ 500 for one',
+              activityItem: activityListResponse.activityList[index - 1],
             ),
           ),
         );
