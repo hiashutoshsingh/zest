@@ -25,26 +25,35 @@ class ActivityItem {
   String estimatedCost;
   String contact;
   String id;
+  List<Timing> timing;
+  List<ReviewTags> reviewTags;
+  MenuImages menuImages;
+  List<KeyFeatures> keyFeatures;
 
-  ActivityItem(
-      {this.isHavingMenu,
-      this.sId,
-      this.publishedAt,
-      this.rank,
-      this.rating,
-      this.activityName,
-      this.location,
-      this.activityImages,
-      this.createdAt,
-      this.updatedAt,
-      this.iV,
-      this.category,
-      this.city,
-      this.subCategory,
-      this.description,
-      this.estimatedCost,
-      this.contact,
-      this.id});
+  ActivityItem({
+    this.isHavingMenu,
+    this.sId,
+    this.publishedAt,
+    this.rank,
+    this.rating,
+    this.activityName,
+    this.location,
+    this.activityImages,
+    this.createdAt,
+    this.updatedAt,
+    this.iV,
+    this.category,
+    this.city,
+    this.subCategory,
+    this.description,
+    this.estimatedCost,
+    this.contact,
+    this.id,
+    this.timing,
+    this.reviewTags,
+    this.menuImages,
+    this.keyFeatures,
+  });
 
   ActivityItem.fromJson(Map<String, dynamic> json) {
     isHavingMenu = json['isHavingMenu'];
@@ -65,6 +74,25 @@ class ActivityItem {
     estimatedCost = json['estimatedCost'];
     contact = json['contact'];
     id = json['id'];
+    if (json['timing'] != null) {
+      timing = <Timing>[];
+      json['timing'].forEach((v) {
+        timing.add(Timing.fromJson(v));
+      });
+    }
+    if (json['reviewTags'] != null) {
+      reviewTags = <ReviewTags>[];
+      json['reviewTags'].forEach((v) {
+        reviewTags.add(ReviewTags.fromJson(v));
+      });
+    }
+    menuImages = json['menuImages'] != null ? MenuImages.fromJson(json['menuImages']) : null;
+    if (json['keyFeatures'] != null) {
+      keyFeatures = <KeyFeatures>[];
+      json['keyFeatures'].forEach((v) {
+        keyFeatures.add(KeyFeatures.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -96,6 +124,134 @@ class ActivityItem {
     data['description'] = description;
     data['estimatedCost'] = estimatedCost;
     data['contact'] = contact;
+    data['id'] = id;
+    if (timing != null) {
+      data['timing'] = timing.map((v) => v.toJson()).toList();
+    }
+    if (reviewTags != null) {
+      data['reviewTags'] = reviewTags.map((v) => v.toJson()).toList();
+    }
+    if (menuImages != null) {
+      data['menuImages'] = menuImages.toJson();
+    }
+    if (keyFeatures != null) {
+      data['keyFeatures'] = keyFeatures.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class KeyFeatures {
+  String sId;
+  String value;
+  int iV;
+  String id;
+
+  KeyFeatures({this.sId, this.value, this.iV, this.id});
+
+  KeyFeatures.fromJson(Map<String, dynamic> json) {
+    sId = json['_id'];
+    value = json['value'];
+    iV = json['__v'];
+    id = json['id'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['_id'] = sId;
+    data['value'] = value;
+    data['__v'] = iV;
+    data['id'] = id;
+    return data;
+  }
+}
+
+class MenuImages {
+  List<ActivityImageItem> image;
+  String sId;
+  String alt;
+  int iV;
+  String id;
+
+  MenuImages({this.image, this.sId, this.alt, this.iV, this.id});
+
+  MenuImages.fromJson(Map<String, dynamic> json) {
+    if (json['image'] != null) {
+      image = <ActivityImageItem>[];
+      json['image'].forEach((v) {
+        image.add(ActivityImageItem.fromJson(v));
+      });
+    }
+    sId = json['_id'];
+    alt = json['alt'];
+    iV = json['__v'];
+    id = json['id'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (image != null) {
+      data['image'] = image.map((v) => v.toJson()).toList();
+    }
+    data['_id'] = sId;
+    data['alt'] = alt;
+    data['__v'] = iV;
+    data['id'] = id;
+    return data;
+  }
+}
+
+class ReviewTags {
+  String sId;
+  String value;
+  int iV;
+  String id;
+
+  ReviewTags({this.sId, this.value, this.iV, this.id});
+
+  ReviewTags.fromJson(Map<String, dynamic> json) {
+    sId = json['_id'];
+    value = json['value'];
+    iV = json['__v'];
+    id = json['id'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['_id'] = sId;
+    data['value'] = value;
+    data['__v'] = iV;
+    data['id'] = id;
+    return data;
+  }
+}
+
+class Timing {
+  String sId;
+  String openingTime;
+  String closingTime;
+  String day;
+  int iV;
+  String id;
+
+  Timing({this.sId, this.openingTime, this.closingTime, this.day, this.iV, this.id});
+
+  Timing.fromJson(Map<String, dynamic> json) {
+    sId = json['_id'];
+    openingTime = json['openingTime'];
+    closingTime = json['closingTime'];
+    day = json['day'];
+    iV = json['__v'];
+    id = json['id'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['_id'] = sId;
+    data['openingTime'] = openingTime;
+    data['closingTime'] = closingTime;
+    data['day'] = day;
+    data['__v'] = iV;
     data['id'] = id;
     return data;
   }
