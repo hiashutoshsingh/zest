@@ -21,6 +21,9 @@ dependencies:
   dio_smart_retry: 1.0.3
   logger: 1.1.0
   glassmorphism: 3.0.0
+  url_launcher: 6.0.12
+  share_plus: 3.0.4
+  carousel_slider: 4.0.0
 
 flutter:
   uses-material-design: true

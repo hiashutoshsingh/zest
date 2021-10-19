@@ -167,19 +167,19 @@ class KeyFeatures {
 }
 
 class MenuImages {
-  List<ActivityImageItem> image;
+  List<ActivityImageItem> images;
   String sId;
   String alt;
   int iV;
   String id;
 
-  MenuImages({this.image, this.sId, this.alt, this.iV, this.id});
+  MenuImages({this.images, this.sId, this.alt, this.iV, this.id});
 
   MenuImages.fromJson(Map<String, dynamic> json) {
     if (json['image'] != null) {
-      image = <ActivityImageItem>[];
+      images = <ActivityImageItem>[];
       json['image'].forEach((v) {
-        image.add(ActivityImageItem.fromJson(v));
+        images.add(ActivityImageItem.fromJson(v));
       });
     }
     sId = json['_id'];
@@ -190,8 +190,8 @@ class MenuImages {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    if (image != null) {
-      data['image'] = image.map((v) => v.toJson()).toList();
+    if (images != null) {
+      data['image'] = images.map((v) => v.toJson()).toList();
     }
     data['_id'] = sId;
     data['alt'] = alt;

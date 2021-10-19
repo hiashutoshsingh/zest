@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:glassmorphism/glassmorphism.dart';
 import 'package:zest/data/model/activity_list_response.dart';
 import 'package:zest/theme/app_theme.dart';
 import 'package:zest/utils/constants.dart';
 
-class PopularThingWidget extends StatelessWidget {
+import 'glass_container.dart';
+
+class ActivityWidget extends StatelessWidget {
   final ActivityItem activityItem;
 
-  PopularThingWidget({
+  ActivityWidget({
     this.activityItem,
   });
 
@@ -26,23 +27,9 @@ class PopularThingWidget extends StatelessWidget {
             ),
             Positioned(
               bottom: 0,
-              child: GlassmorphicContainer(
+              child: GlassContainer(
                 width: MediaQuery.of(context).size.width * .9,
                 height: MediaQuery.of(context).size.height * .14,
-                borderRadius: 0,
-                blur: 20,
-                alignment: Alignment.bottomCenter,
-                border: 0,
-                linearGradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [Color(0xFFffffff).withOpacity(0.1), Color(0xFFFFFFFF).withOpacity(0.05)],
-                    stops: [0.1, 1]),
-                borderGradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [Color(0xFFffffff).withOpacity(0.5), Color((0xFFFFFFFF)).withOpacity(0.5)],
-                ),
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Row(

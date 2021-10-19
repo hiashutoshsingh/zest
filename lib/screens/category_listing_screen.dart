@@ -63,7 +63,7 @@ class CategoryListingScreen extends StatelessWidget {
                       ),
                       Expanded(
                         flex: 12,
-                        child: PlacesListWidget(),
+                        child: ActivityListWidget(),
                       ),
                     ],
                   ),

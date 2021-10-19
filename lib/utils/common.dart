@@ -1,6 +1,9 @@
 import 'package:dio/src/response.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:zest/theme/app_theme.dart';
 
 import 'app_logger.dart';
 
@@ -45,5 +48,17 @@ class Common {
 
   static void responsePrint(Response<dynamic> response) {
     AppLogger.print("Response: ${response.data}");
+  }
+
+  static Future<void> launchURL(String url) async {
+    bool canLaunchVal = await canLaunch(url);
+    if (canLaunchVal) {
+      await launch(url);
+    } else {
+      Fluttertoast.showToast(
+        msg: "Couldn't perform action!",
+        backgroundColor: AppColor.red,
+      );
+    }
   }
 }

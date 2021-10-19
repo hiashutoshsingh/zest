@@ -47,7 +47,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Expanded(
                         flex: 2,
-                        child: CategoryList(homeProvider.categoryListResponse),
+                        child: CategoryList(
+                          homeProvider.categoryListResponse,
+                        ),
                       ),
                       Expanded(
                         flex: 8,
@@ -55,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           padding: const EdgeInsets.symmetric(
                             horizontal: 20,
                           ),
-                          child: PlacesListWidget(
+                          child: ActivityListWidget(
                             isHomeScreen: true,
                             activityListResponse: homeProvider.activityListResponse,
                           ),

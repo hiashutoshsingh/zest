@@ -86,7 +86,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   SizedBox(
                     height: 16,
                   ),
-                  PlaceKnownList(),
+                  PlaceKnownList([]),
                   SizedBox(
                     height: 16,
                   ),

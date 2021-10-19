@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:zest/data/args/activity_arg.dart';
 import 'package:zest/data/model/activity_list_response.dart';
-import 'package:zest/screens/place_screen.dart';
+import 'package:zest/screens/activity_screen.dart';
 import 'package:zest/theme/app_theme.dart';
 import 'package:zest/widgets/popular_thing_widget.dart';
 
-class PlacesListWidget extends StatelessWidget {
+class ActivityListWidget extends StatelessWidget {
   final bool isHomeScreen;
   final ActivityListResponse activityListResponse;
 
-  PlacesListWidget({
+  ActivityListWidget({
     this.isHomeScreen = false,
     this.activityListResponse,
   });
@@ -36,9 +37,15 @@ class PlacesListWidget extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: InkWell(
             onTap: () {
-              Navigator.pushNamed(context, PlaceScreen.route);
+              Navigator.pushNamed(
+                context,
+                ActivityScreen.route,
+                arguments: ActivityArg(
+                  activityItem: activityListResponse.activityList[index - 1],
+                ),
+              );
             },
-            child: PopularThingWidget(
+            child: ActivityWidget(
               activityItem: activityListResponse.activityList[index - 1],
             ),
           ),

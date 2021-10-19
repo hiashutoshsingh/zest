@@ -29,7 +29,7 @@ class SavedActivitiesScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: SafeArea(
-        child: PlacesListWidget(),
+        child: ActivityListWidget(),
       ),
     );
   }

@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:zest/data/model/activity_list_response.dart';
 import 'package:zest/theme/app_theme.dart';
 
 class PlaceKnownList extends StatelessWidget {
+  final List<ReviewTags> reviewTags;
+
+  PlaceKnownList(this.reviewTags);
+
   @override
   Widget build(BuildContext context) {
+    List<Widget> _widgets = [];
+    reviewTags.forEach((element) {
+      if (element != null && element.value != null) {
+        _widgets.add(_item(element.value));
+      }
+    });
     return Wrap(
       spacing: 12,
       runSpacing: 16,
-      children: [
-        _item('Amazing Place'),
-        _item('Great Vibe'),
-        _item('18+'),
-        _item('Happy Place'),
-        _item('Fun'),
-      ],
+      children: _widgets,
     );
   }
 
