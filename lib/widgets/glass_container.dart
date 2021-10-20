@@ -21,15 +21,20 @@ class GlassContainer extends StatelessWidget {
       blur: 10,
       alignment: Alignment.bottomCenter,
       border: 0,
-      linearGradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [Color(0xFFffffff).withOpacity(0.1), Color(0xFFFFFFFF).withOpacity(0.05)],
-          stops: [0.1, 1]),
+      linearGradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [
+        Color(0xFFffffff).withOpacity(0.1),
+        Color(0xFFFFFFFF).withOpacity(0.05),
+      ], stops: [
+        0.1,
+        1
+      ]),
       borderGradient: LinearGradient(
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
-        colors: [Color(0xFFffffff).withOpacity(0.5), Color((0xFFFFFFFF)).withOpacity(0.5)],
+        colors: [
+          Color(0xFFffffff).withOpacity(0.5),
+          Color((0xFFFFFFFF)).withOpacity(0.5),
+        ],
       ),
       child: child,
     );

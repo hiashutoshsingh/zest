@@ -24,6 +24,7 @@ dependencies:
   url_launcher: 6.0.12
   share_plus: 3.0.4
   carousel_slider: 4.0.0
+  aurora: 1.0.0
 
 flutter:
   uses-material-design: true

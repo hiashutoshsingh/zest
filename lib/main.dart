@@ -29,7 +29,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.red),
       routes: AppRoutes().appRoutes(),
       initialRoute: HomeScreen.route,
-      // initialRoute: HomeScreen.route,
       debugShowCheckedModeBanner: false,
     );
   }

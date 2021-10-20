@@ -7,6 +7,7 @@ import 'package:zest/screens/home_screen.dart';
 import 'package:zest/theme/app_theme.dart';
 import 'package:zest/utils/app_storage.dart';
 import 'package:zest/utils/constants.dart';
+import 'package:zest/widgets/glass_container.dart';
 
 class SelectCityScreen extends StatefulWidget {
   static final String route = 'select_city_screen';
@@ -90,16 +91,16 @@ class _SelectCityScreenState extends State<SelectCityScreen> {
             ),
             Padding(
               padding: EdgeInsets.all(24.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: AppColor.black,
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: 6) + EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    cityItem.cityName,
-                    style: AppTextStyles.semiBoldTextStyle,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: GlassContainer(
+                  width: MediaQuery.of(context).size.width * .3,
+                  height: 36,
+                  child: Center(
+                    child: Text(
+                      cityItem.cityName,
+                      style: AppTextStyles.semiBoldTextStyle,
+                    ),
                   ),
                 ),
               ),
