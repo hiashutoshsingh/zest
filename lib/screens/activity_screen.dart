@@ -23,127 +23,112 @@ class ActivityScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColor.black,
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Stack(
+        child: Stack(
+          children: [
+            SingleChildScrollView(
+              child: Column(
                 children: [
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.5,
-                    child: CarouselImageWidget(
-                      activityItem.activityImages.image,
-                      MediaQuery.of(context).size.height * .18,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: InkWell(
-                      onTap: () => Navigator.pop(context),
-                      child: ClipRRect(
-                        clipBehavior: Clip.hardEdge,
-                        borderRadius: BorderRadius.circular(128),
-                        child: GlassContainer(
-                          width: 48,
-                          height: 48,
-                          child: Center(
-                            child: Icon(
-                              Icons.arrow_back,
-                              size: 24,
-                              color: AppColor.white,
-                            ),
-                          ),
+                  Stack(
+                    children: [
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.5,
+                        child: CarouselImageWidget(
+                          activityItem.activityImages.image,
+                          MediaQuery.of(context).size.height * .18,
                         ),
                       ),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    child: GlassContainer(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height * .18,
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      Positioned(
+                        bottom: 0,
+                        child: GlassContainer(
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height * .18,
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  activityItem.activityName,
-                                  style: AppTextStyles.regularTextStyle.copyWith(
-                                    fontSize: 24,
-                                  ),
-                                ),
                                 Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      activityItem.rating.toString(),
-                                      style: AppTextStyles.regularTextStyle,
-                                    ),
-                                    SizedBox(
-                                      width: 6,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        top: 2,
+                                      activityItem.activityName,
+                                      style: AppTextStyles.regularTextStyle.copyWith(
+                                        fontSize: 24,
                                       ),
-                                      child: Icon(
-                                        Icons.star,
-                                        size: 20,
-                                        color: AppColor.white,
+                                    ),
+                                    Row(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          activityItem.rating.toString(),
+                                          style: AppTextStyles.regularTextStyle,
+                                        ),
+                                        SizedBox(
+                                          width: 6,
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                            top: 2,
+                                          ),
+                                          child: Icon(
+                                            Icons.star,
+                                            size: 20,
+                                            color: AppColor.white,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 16,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    activityItem.contact != null
+                                        ? Expanded(
+                                            child: InkWell(
+                                              onTap: () {
+                                                Common.launchURL('tel:${activityItem.contact}');
+                                              },
+                                              child: _placeInfoIcon(Icons.call, 'Call'),
+                                            ),
+                                          )
+                                        : Container(),
+                                    activityItem.timing != null && activityItem.timing.isNotEmpty
+                                        ? Expanded(child: _placeInfoIcon(Icons.timelapse, 'Timing'))
+                                        : Container(),
+                                    Expanded(child: _placeInfoIcon(Icons.bookmark_border, 'Save')),
+                                    Expanded(
+                                      child: InkWell(
+                                        onTap: () {
+                                          _onShare(context, activityItem);
+                                        },
+                                        child: _placeInfoIcon(Icons.share_outlined, 'Share'),
                                       ),
                                     ),
                                   ],
                                 ),
                               ],
                             ),
-                            SizedBox(
-                              height: 16,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                activityItem.contact != null
-                                    ? InkWell(
-                                        onTap: () {
-                                          Common.launchURL('tel:${activityItem.contact}');
-                                        },
-                                        child: _placeInfoIcon(Icons.call, 'Call'),
-                                      )
-                                    : Container(),
-                                activityItem.timing != null && activityItem.timing.isNotEmpty
-                                    ? _placeInfoIcon(Icons.timelapse, 'Timing')
-                                    : Container(),
-                                _placeInfoIcon(Icons.bookmark_border, 'Save'),
-                                InkWell(
-                                  onTap: () {
-                                    _onShare(context, activityItem);
-                                  },
-                                  child: _placeInfoIcon(Icons.share_outlined, 'Share'),
-                                ),
-                              ],
-                            ),
-                          ],
+                          ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        activityItem.location != null &&
-                                activityItem.location.geoCoordinates != null &&
-                                activityItem.location.geoCoordinates.coordinates != null
-                            ? Row(
+                        if (activityItem.location != null &&
+                            activityItem.location.geoCoordinates != null &&
+                            activityItem.location.geoCoordinates.coordinates != null) ...[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
@@ -164,12 +149,8 @@ class ActivityScreen extends StatelessWidget {
                                     style: AppTextStyles.regularTextStyle,
                                   ),
                                 ],
-                              )
-                            : Container(),
-                        activityItem.location != null &&
-                                activityItem.location.geoCoordinates != null &&
-                                activityItem.location.geoCoordinates.coordinates != null
-                            ? InkWell(
+                              ),
+                              InkWell(
                                 onTap: () {
                                   Common.launchURL(
                                       'https://www.google.com/maps/search/?api=1&query=${activityItem.location.geoCoordinates.coordinates[0]},${activityItem.location.geoCoordinates.coordinates[1]}');
@@ -180,60 +161,58 @@ class ActivityScreen extends StatelessWidget {
                                     color: AppColor.teal,
                                   ),
                                 ),
-                              )
-                            : Container(),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    activityItem.location != null && activityItem.location.address != null
-                        ? Text(
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 12,
+                          ),
+                        ],
+                        if (activityItem.location != null && activityItem.location.address != null) ...[
+                          Text(
                             activityItem.location.address,
                             style: AppTextStyles.thinTextStyle,
-                          )
-                        : Container(),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            top: 2,
                           ),
-                          child: Icon(
-                            Icons.info_outline,
-                            size: 20,
-                            color: AppColor.white,
+                          SizedBox(
+                            height: 16,
                           ),
-                        ),
-                        SizedBox(
-                          width: 6,
-                        ),
-                        activityItem.description != null
-                            ? Text(
+                        ],
+                        if (activityItem.description != null) ...[
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  top: 2,
+                                ),
+                                child: Icon(
+                                  Icons.info_outline,
+                                  size: 20,
+                                  color: AppColor.white,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 6,
+                              ),
+                              Text(
                                 'Description',
                                 style: AppTextStyles.regularTextStyle,
-                              )
-                            : Container(),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    activityItem.description != null
-                        ? Text(
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 12,
+                          ),
+                          Text(
                             activityItem.description,
                             style: AppTextStyles.thinTextStyle,
-                          )
-                        : Container(),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    activityItem.estimatedCost != null
-                        ? Row(
+                          ),
+                          SizedBox(
+                            height: 16,
+                          ),
+                        ],
+                        if (activityItem.estimatedCost != null) ...[
+                          Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
@@ -254,22 +233,20 @@ class ActivityScreen extends StatelessWidget {
                                 style: AppTextStyles.regularTextStyle,
                               ),
                             ],
-                          )
-                        : Container(),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    activityItem.estimatedCost != null
-                        ? Text(
+                          ),
+                          SizedBox(
+                            height: 12,
+                          ),
+                          Text(
                             '₹ ' + activityItem.estimatedCost,
                             style: AppTextStyles.thinTextStyle,
-                          )
-                        : Container(),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    activityItem.menuImages != null && activityItem.menuImages.images != null
-                        ? Row(
+                          ),
+                          SizedBox(
+                            height: 16,
+                          ),
+                        ],
+                        if (activityItem.menuImages != null && activityItem.menuImages.images != null) ...[
+                          Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
@@ -290,22 +267,20 @@ class ActivityScreen extends StatelessWidget {
                                 style: AppTextStyles.regularTextStyle,
                               ),
                             ],
-                          )
-                        : Container(),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    activityItem.menuImages != null && activityItem.menuImages.images != null
-                        ? Container(
+                          ),
+                          SizedBox(
+                            height: 12,
+                          ),
+                          Container(
                             height: 120,
                             child: MenuList(activityItem.menuImages.images),
-                          )
-                        : Container(),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    activityItem.reviewTags != null && activityItem.reviewTags.isNotEmpty
-                        ? Row(
+                          ),
+                          SizedBox(
+                            height: 16,
+                          ),
+                        ],
+                        if (activityItem.reviewTags != null && activityItem.reviewTags.isNotEmpty) ...[
+                          Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
@@ -326,19 +301,43 @@ class ActivityScreen extends StatelessWidget {
                                 style: AppTextStyles.regularTextStyle,
                               ),
                             ],
-                          )
-                        : Container(),
-                    SizedBox(
-                      height: 12,
+                          ),
+                          SizedBox(
+                            height: 12,
+                          ),
+                          PlaceKnownList(activityItem.reviewTags),
+                        ],
+                        SizedBox(
+                          height: 16,
+                        ),
+                      ],
                     ),
-                    activityItem.reviewTags != null && activityItem.reviewTags.isNotEmpty
-                        ? PlaceKnownList(activityItem.reviewTags)
-                        : Container(),
-                  ],
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: InkWell(
+                onTap: () => Navigator.pop(context),
+                child: ClipRRect(
+                  clipBehavior: Clip.hardEdge,
+                  borderRadius: BorderRadius.circular(128),
+                  child: GlassContainer(
+                    width: 48,
+                    height: 48,
+                    child: Center(
+                      child: Icon(
+                        Icons.arrow_back,
+                        size: 24,
+                        color: AppColor.white,
+                      ),
+                    ),
+                  ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -351,15 +350,15 @@ class ActivityScreen extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border.all(
               color: AppColor.white,
-              width: 2,
+              width: 1.5,
             ),
             shape: BoxShape.circle,
           ),
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(10.0),
             child: Icon(
               iconData,
-              size: 24,
+              size: 20,
               color: AppColor.white,
             ),
           ),
