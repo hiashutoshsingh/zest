@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zest/theme/app_theme.dart';
-import 'package:zest/widgets/list_popular_things_widget.dart';
+import 'package:zest/widgets/activity_list_widget.dart';
 
 class CategoryListingScreen extends StatelessWidget {
   static final String route = 'category_listing_screen';

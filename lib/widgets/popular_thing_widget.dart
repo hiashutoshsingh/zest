@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:zest/data/model/activity_list_response.dart';
 import 'package:zest/theme/app_theme.dart';
-import 'package:zest/utils/constants.dart';
 
+import 'carousel_image.dart';
 import 'glass_container.dart';
 
 class ActivityWidget extends StatelessWidget {
@@ -20,11 +20,7 @@ class ActivityWidget extends StatelessWidget {
         height: MediaQuery.of(context).size.height * .4,
         child: Stack(
           children: [
-            Image.network(
-              apiUrl + activityItem.activityImages.image.first.url,
-              fit: BoxFit.cover,
-              width: MediaQuery.of(context).size.width,
-            ),
+            CarouselImageWidget(activityItem.activityImages.image, MediaQuery.of(context).size.height * .12),
             Positioned(
               bottom: 0,
               child: GlassContainer(

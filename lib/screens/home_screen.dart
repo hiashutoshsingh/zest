@@ -3,8 +3,8 @@ import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 import 'package:zest/data/provider/home_provider.dart';
 import 'package:zest/theme/app_theme.dart';
+import 'package:zest/widgets/activity_list_widget.dart';
 import 'package:zest/widgets/home_app_bar.dart';
-import 'package:zest/widgets/list_popular_things_widget.dart';
 import 'package:zest/widgets/things_list.dart';
 
 class HomeScreen extends StatefulWidget {

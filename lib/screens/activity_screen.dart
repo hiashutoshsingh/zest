@@ -4,6 +4,7 @@ import 'package:zest/data/args/activity_arg.dart';
 import 'package:zest/data/model/activity_list_response.dart';
 import 'package:zest/theme/app_theme.dart';
 import 'package:zest/utils/common.dart';
+import 'package:zest/widgets/carousel_image.dart';
 import 'package:zest/widgets/glass_container.dart';
 import 'package:zest/widgets/menu_list.dart';
 import 'package:zest/widgets/place_known_widget.dart';
@@ -28,8 +29,11 @@ class ActivityScreen extends StatelessWidget {
               Stack(
                 children: [
                   Container(
-                    color: Colors.purple,
                     height: MediaQuery.of(context).size.height * 0.5,
+                    child: CarouselImageWidget(
+                      activityItem.activityImages.image,
+                      MediaQuery.of(context).size.height * .18,
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
