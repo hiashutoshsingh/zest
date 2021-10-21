@@ -3,7 +3,7 @@ import 'package:zest/data/args/category_arg.dart';
 import 'package:zest/data/model/category_list_response.dart';
 import 'package:zest/screens/category_listing_screen.dart';
 
-import 'place_category_widget.dart';
+import 'category_widget.dart';
 
 class CategoryList extends StatelessWidget {
   final CategoryListResponse categoryListResponse;

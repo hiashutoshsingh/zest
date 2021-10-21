@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:zest/data/args/feedback_bug_arg.dart';
 import 'package:zest/screens/feedback_bug_screen.dart';
+import 'package:zest/screens/login_screen.dart';
 import 'package:zest/screens/saved_activities_screen.dart';
-import 'package:zest/screens/splash_screen.dart';
 import 'package:zest/theme/app_theme.dart';
+import 'package:zest/utils/app_storage.dart';
 
 class ProfileScreen extends StatelessWidget {
   static final String route = 'profile_screen';
@@ -112,7 +113,10 @@ class ProfileScreen extends StatelessWidget {
                       height: 32,
                     ),
                     InkWell(
-                      onTap: () => Navigator.pushNamed(context, SplashScreen.route),
+                      onTap: () async {
+                        await AppStorage().deleteAll();
+                        Navigator.pushNamed(context, LoginScreen.route);
+                      },
                       child: _item(Icons.logout, 'Logout'),
                     ),
                     SizedBox(

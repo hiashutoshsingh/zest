@@ -3,7 +3,7 @@ import 'package:zest/data/args/activity_arg.dart';
 import 'package:zest/data/model/activity_list_response.dart';
 import 'package:zest/screens/activity_screen.dart';
 import 'package:zest/theme/app_theme.dart';
-import 'package:zest/widgets/popular_thing_widget.dart';
+import 'package:zest/widgets/activity_widget.dart';
 
 class ActivityListWidget extends StatelessWidget {
   final bool isHomeScreen;

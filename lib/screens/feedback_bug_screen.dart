@@ -99,7 +99,7 @@ class _FeedbackBugScreenState extends State<FeedbackBugScreen> {
                       maxLines: 6,
                       decoration: InputDecoration(
                         filled: true,
-                        contentPadding: EdgeInsets.symmetric(vertical: 16),
+                        contentPadding: EdgeInsets.symmetric(vertical: 8),
                         hintStyle: AppTextStyles.regularTextStyle.copyWith(
                           color: AppColor.lightGrey,
                         ),

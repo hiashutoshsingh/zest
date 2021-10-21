@@ -76,8 +76,6 @@ class _HomeAppBarState extends State<HomeAppBar> {
                 ),
                 InkWell(
                   onTap: () async {
-                    // await AppStorage().deleteAll();
-                    // Navigator.pushNamed(context, LoginScreen.route);
                     Navigator.pushNamed(context, ProfileScreen.route);
                   },
                   child: Container(
