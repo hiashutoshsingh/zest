@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zest/data/args/category_arg.dart';
 import 'package:zest/data/model/category_list_response.dart';
 import 'package:zest/screens/category_listing_screen.dart';
 
@@ -20,7 +21,13 @@ class CategoryList extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: InkWell(
             onTap: () {
-              Navigator.pushNamed(context, CategoryListingScreen.route);
+              Navigator.pushNamed(
+                context,
+                CategoryListingScreen.route,
+                arguments: CategoryArg(
+                  categoryItem: categoryListResponse.categoryList[index],
+                ),
+              );
             },
             child: CategoryWidget(
               categoryItem: categoryListResponse.categoryList[index],

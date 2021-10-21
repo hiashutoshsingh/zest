@@ -30,7 +30,7 @@ class _SelectCityScreenState extends State<SelectCityScreen> {
     return SafeArea(
       child: Consumer<CityProvider>(
         builder: (BuildContext pContext, cityProvider, Widget child) {
-          if (cityProvider.loading || cityProvider.cityListResponse == null) {
+          if (cityProvider.loading || cityProvider.cityListResponse == null || cityProvider.cityListResponse.cityList == null) {
             return Center(
               child: CircularProgressIndicator(),
             );
@@ -71,6 +71,7 @@ class _SelectCityScreenState extends State<SelectCityScreen> {
   _cityItem(CityItem cityItem) {
     return InkWell(
       onTap: () async {
+        Provider.of<CityProvider>(context, listen: false).selectedCity = cityItem;
         await AppStorage().writeData(selectedCityKey, cityItem.id);
         Navigator.pushNamedAndRemoveUntil(context, HomeScreen.route, (route) => false);
       },

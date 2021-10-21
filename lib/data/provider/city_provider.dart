@@ -7,11 +7,27 @@ import 'package:zest/utils/api_services/user_api.dart';
 class CityProvider extends ChangeNotifier {
   bool _loading = false;
   CityListResponse _cityListResponse;
+  CityItem _selectedCity;
+  List<String> _cityListString = [];
+
+  List<String> get cityListString => _cityListString;
+
+  set cityListString(List<String> value) {
+    _cityListString = value;
+    notifyListeners();
+  }
 
   bool get loading => _loading;
 
   set loading(bool value) {
     _loading = value;
+    notifyListeners();
+  }
+
+  CityItem get selectedCity => _selectedCity;
+
+  set selectedCity(CityItem value) {
+    _selectedCity = value;
     notifyListeners();
   }
 
@@ -32,6 +48,7 @@ class CityProvider extends ChangeNotifier {
           value.forEach((data) {
             CityItem cityItem = CityItem.fromJson(data);
             cities.add(cityItem);
+            cityListString.add(cityItem.cityName);
           });
           cityListResponse.cityList = cities;
           loading = false;
@@ -39,6 +56,7 @@ class CityProvider extends ChangeNotifier {
       },
     ).catchError(
       (e) {
+        print('catchError $e');
         loading = false;
         Fluttertoast.showToast(
           msg: 'Error while fetching cities',

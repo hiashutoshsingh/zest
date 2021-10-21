@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:zest/screens/login_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:zest/data/model/city_list_response.dart';
+import 'package:zest/data/provider/city_provider.dart';
+import 'package:zest/screens/profile_screen.dart';
 import 'package:zest/screens/search_screen.dart';
 import 'package:zest/theme/app_theme.dart';
-import 'package:zest/utils/app_storage.dart';
 
 class HomeAppBar extends StatefulWidget {
   @override
@@ -10,14 +12,6 @@ class HomeAppBar extends StatefulWidget {
 }
 
 class _HomeAppBarState extends State<HomeAppBar> {
-  String _chosenValue;
-
-  @override
-  void initState() {
-    super.initState();
-    _chosenValue = 'Noida';
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -38,41 +32,39 @@ class _HomeAppBarState extends State<HomeAppBar> {
                     SizedBox(
                       width: 8,
                     ),
-                    PopupMenuButton<String>(
-                      elevation: 0,
-                      initialValue: _chosenValue,
-                      color: Colors.white,
-                      child: Text(
-                        _chosenValue,
-                        style: AppTextStyles.regularTextStyle.copyWith(
-                          color: AppColor.white,
-                        ),
-                      ),
-                      offset: Offset.fromDirection(100, 0),
-                      onSelected: (v) {
-                        setState(() {
-                          _chosenValue = v;
-                        });
-                      },
-                      itemBuilder: (context) {
-                        return [
-                          'New Delhi',
-                          'Noida',
-                          'Gurgaon',
-                        ].map(
-                          (str) {
-                            return PopupMenuItem(
-                              value: str,
-                              child: Text(
-                                str,
-                                style: AppTextStyles.thinTextStyle.copyWith(
-                                  color: AppColor.black,
-                                  // fontSize: 16,
-                                ),
-                              ),
-                            );
+                    Consumer<CityProvider>(
+                      builder: (BuildContext pContext, cityProvider, Widget child) {
+                        return PopupMenuButton<CityItem>(
+                          elevation: 0,
+                          initialValue: cityProvider.selectedCity,
+                          color: Colors.white,
+                          child: Text(
+                            cityProvider.selectedCity.cityName,
+                            style: AppTextStyles.regularTextStyle.copyWith(
+                              color: AppColor.white,
+                            ),
+                          ),
+                          offset: Offset.fromDirection(100, 0),
+                          onSelected: (v) {
+                            cityProvider.selectedCity = v;
                           },
-                        ).toList();
+                          itemBuilder: (context) {
+                            return cityProvider.cityListResponse.cityList.map(
+                              (city) {
+                                return PopupMenuItem(
+                                  value: city,
+                                  child: Text(
+                                    city.cityName,
+                                    style: AppTextStyles.thinTextStyle.copyWith(
+                                      color: AppColor.black,
+                                      // fontSize: 16,
+                                    ),
+                                  ),
+                                );
+                              },
+                            ).toList();
+                          },
+                        );
                       },
                     ),
                     Icon(
@@ -84,9 +76,9 @@ class _HomeAppBarState extends State<HomeAppBar> {
                 ),
                 InkWell(
                   onTap: () async {
-                    await AppStorage().deleteAll();
-                    Navigator.pushNamed(context, LoginScreen.route);
-                    // Navigator.pushNamed(context, ProfileScreen.route);
+                    // await AppStorage().deleteAll();
+                    // Navigator.pushNamed(context, LoginScreen.route);
+                    Navigator.pushNamed(context, ProfileScreen.route);
                   },
                   child: Container(
                     decoration: BoxDecoration(
