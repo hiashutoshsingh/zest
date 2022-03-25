@@ -6,9 +6,14 @@
 
 `Screeshots:`
 
-<img src="/images/zest_1.png" height="400em" /> <img src="/images/zest_2.png" height="400em" />
-<img src="/images/zest_2.png" height="400em" /> <img src="/images/zest_3.png" height="400em" />
-<img src="/images/zest_4.png" height="400em" /> <img src="/images/zest_5.png" height="400em" />
-<img src="/images/zest_6.png" height="400em" /> <img src="/images/zest_7.png" height="400em" />
-<img src="/images/zest_8.png" height="400em" /> <img src="/images/zest_9.png" height="400em" />
+<img src="/images/zest_1.png" height="400em" /> <img src="/images/zest_2.png" height="400em" /> <img src="/images/zest_3.png" height="400em" /> 
+</br>
+</br>
+<img src="/images/zest_4.png" height="400em" /> <img src="/images/zest_5.png" height="400em" /> <img src="/images/zest_6.png" height="400em" />
+</br>
+</br>
+<img src="/images/zest_7.png" height="400em" /> <img src="/images/zest_8.png" height="400em" /> <img src="/images/zest_9.png" height="400em" />
+</br>
+</br>
+
 
