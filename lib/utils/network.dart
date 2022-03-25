@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 
 import 'app_logger.dart';
@@ -50,23 +48,4 @@ class AppNetwork {
 
     return response;
   };
-
-  static final JsonDecoder _decoder = new JsonDecoder();
-
-  // decode json response to dynamic
-  static dynamic decodeResponse(d) {
-    var response = d as Response;
-    final dynamic jsonBody = response.data;
-    final statusCode = response.statusCode;
-
-    if (statusCode < 200 || statusCode >= 300 || jsonBody == null) {
-      throw new Exception("statusCode: $statusCode");
-    }
-
-    if (jsonBody is String) {
-      return _decoder.convert(jsonBody);
-    } else {
-      return jsonBody;
-    }
-  }
 }

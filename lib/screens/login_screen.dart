@@ -129,7 +129,6 @@ class _LoginScreenState extends State<LoginScreen> {
   _registerUser(String email, String name) async {
     ServiceApi().registerUser(email).then(
       (value) async {
-        print("_registerUser 1111 $value");
         if (value != null) {
           await AppStorage().writeData(emailKey, email);
           await AppStorage().writeData(nameKey, name);
@@ -138,7 +137,6 @@ class _LoginScreenState extends State<LoginScreen> {
       },
     ).catchError(
       (e) {
-        print("_registerUser 222 $e");
         print(e);
       },
     );
